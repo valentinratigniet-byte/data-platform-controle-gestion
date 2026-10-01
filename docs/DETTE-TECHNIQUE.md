@@ -26,7 +26,7 @@ de sprint (voir Definition of Done, `ROADMAP.md`).
   sur MinIO par le webhook `cloture-mensuelle`) — **exécuté et vérifié**,
   pas juste écrit : run complet OK du premier coup
 - ~~Rapport Power BI absent~~ → `dashboards/powerbi/dbt_cg.pbix`
-  (« Pilotage CG »), détail dans [`docs/BI-POWERBI.md`](docs/BI-POWERBI.md)
+  (« Pilotage CG »), détail dans [`docs/BI-POWERBI.md`](BI-POWERBI.md)
   ; dettes #9 et #10 ajoutées ci-dessus pour les limites RLS/OLS trouvées
   en le construisant
 - ~~README incomplet~~ → sections MLOps et Power BI ajoutées (manquaient
