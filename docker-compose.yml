@@ -36,20 +36,25 @@ services:
       retries: 10
 
   minio:
-    image: minio/minio:latest
+    # Stockage S3 de la couche bronze. RustFS (même API S3) remplace MinIO, qui ne distribue plus
+    # d'image Docker : le nom de service, le conteneur, les ports et les identifiants restent ceux
+    # de MinIO, le code (client Python `minio`) et n8n n'ont rien à changer.
+    image: rustfs/rustfs:latest
     container_name: bv-minio-bronze
     restart: unless-stopped
-    command: server /data --console-address ":9001"
+    command: ["/data"]
     environment:
-      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-minio_admin}
-      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-changeme123}
+      RUSTFS_ACCESS_KEY: ${MINIO_ROOT_USER:-minio_admin}
+      RUSTFS_SECRET_KEY: ${MINIO_ROOT_PASSWORD:-changeme123}
+      RUSTFS_ADDRESS: ":9000"
+      RUSTFS_CONSOLE_ENABLE: "true"
     ports:
       - "9000:9000"
       - "9001:9001"
     volumes:
-      - minio_data:/data
+      - rustfs_data:/data
     healthcheck:
-      test: ["CMD", "mc", "ready", "local"]
+      test: ["CMD-SHELL", "curl -s -o /dev/null http://localhost:9000/ || exit 1"]
       interval: 5s
       timeout: 5s
       retries: 10
@@ -112,7 +117,7 @@ services:
 volumes:
   mysql_data:
   mongo_data:
-  minio_data:
+  rustfs_data:
   postgres_data:
   n8n_data:
   ollama_data:
