@@ -101,3 +101,5 @@ de sprint (voir Definition of Done, `ROADMAP.md`).
   de clore le sprint (Definition of Done).
 - Une ligne n'est retirée du tableau que quand elle est réellement soldée
   (code écrit, testé) — pas quand elle est simplement reportée.
+
+- **Image MinIO plus distribuée (constaté le 2026-10-07)** : `minio/minio` a disparu de Docker Hub et `quay.io/minio/minio` refuse l'accès. La CI utilise désormais **RustFS** (`rustfs/rustfs`, même API S3, mêmes identifiants, port 9000). Le `docker-compose.yml` local garde `minio/minio:latest`, qui ne fonctionne que si l'image est déjà en cache sur le poste : à basculer sur RustFS (ou SeaweedFS) avant toute réinstallation sur une machine neuve.

@@ -57,13 +57,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Démarrer MinIO (pas de "command" possible sur un service container)
+      - name: Démarrer un stockage S3 (RustFS, compatible MinIO)
+        # MinIO ne distribue plus d'image librement (minio/minio retiré de Docker Hub, quay.io refusé) :
+        # RustFS sert la même API S3 sur le même port, le client Python `minio` du pipeline ne change pas.
         run: |
-          docker run -d --name minio -p 9000:9000 -p 9001:9001 \
-            -e MINIO_ROOT_USER=minio_admin -e MINIO_ROOT_PASSWORD=changeme123 \
-            quay.io/minio/minio server /data --console-address ":9001"
-          for i in $(seq 1 20); do
-            curl -sf http://localhost:9000/minio/health/live && break
+          docker run -d --name s3 -p 9000:9000 -p 9001:9001             -e RUSTFS_ACCESS_KEY=minio_admin -e RUSTFS_SECRET_KEY=changeme123             -e RUSTFS_ADDRESS=:9000 -e RUSTFS_CONSOLE_ENABLE=true             rustfs/rustfs:latest /data
+          for i in $(seq 1 30); do
+            curl -s -o /dev/null http://localhost:9000/ && break
             sleep 2
           done
 

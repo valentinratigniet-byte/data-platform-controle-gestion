@@ -36,7 +36,7 @@ services:
       retries: 10
 
   minio:
-    image: quay.io/minio/minio:latest
+    image: minio/minio:latest
     container_name: bv-minio-bronze
     restart: unless-stopped
     command: server /data --console-address ":9001"
