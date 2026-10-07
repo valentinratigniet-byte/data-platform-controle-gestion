@@ -4,7 +4,7 @@
 de dérive.
 
 Adapté du même outil sur le projet solo (portfolio-data/projet-14-filiation),
-repointé sur dbt_cg de ce projet binôme.
+repointé sur dbt_cg de ce projet.
 
 Usage :
     python scripts/extract_filiation.py [--target DBT_TARGET_DIR] [--html INDEX_HTML]

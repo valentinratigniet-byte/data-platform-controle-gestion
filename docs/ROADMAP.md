@@ -1,9 +1,6 @@
 # Roadmap — 10 sprints (2 semaines chacun, ~20 semaines)
 
-Roadmap détaillée pour développer le projet à fond. Conçue à l'origine pour
-un binôme (répartition Valentin = Data Engineering/dbt/BigQuery, Baptiste =
-Automatisation/BI/Gouvernance) — actuellement exécutée en solo, sprints 2+
-sans split de rôle. Dette technique trackée dans
+Roadmap détaillée pour développer le projet à fond. Dette technique trackée dans
 [`DETTE-TECHNIQUE.md`](DETTE-TECHNIQUE.md), mise à jour à chaque fin de
 sprint.
 
@@ -118,7 +115,7 @@ seulement de la génération de données propres.
   indépendants), Finance/Direction/PDG voient les 2 240 lignes et
   11 847 943,82€. CI GitHub Actions vert du premier coup sur le pipeline
   complet ; `dbt docs` publié sur GitHub Pages
-  (https://valentinratigniet-byte.github.io/projet-baptiste-valentin/).
+  (https://valentinratigniet-byte.github.io/data-platform-controle-gestion/).
   Trois root causes trouvées et corrigées en cours de route : collision
   `GOOGLE_APPLICATION_CREDENTIALS` avec le portfolio solo (renommé
   `BQ_KEYFILE`), troisième piège SSL (gRPC, indépendant de Python/Node —
@@ -153,7 +150,7 @@ seulement de la génération de données propres.
 
 ## Sprint 8 — KPI Traçabilité interactive ✅ terminé
 Reprise et adaptation du pattern du projet Filiation (portfolio solo,
-`projet-14-filiation`) à ce projet binôme.
+`projet-14-filiation`) à ce projet.
 - Page interactive (HTML/CSS/JS vanilla, sans dépendance) : clic sur
   n'importe quel indicateur/colonne/table → remonte sa formule/SQL jusqu'à
   la donnée brute et sa source
@@ -243,4 +240,3 @@ Reprise et adaptation du pattern du projet Filiation (portfolio solo,
 - Mise à jour de `DETTE-TECHNIQUE.md` (ajout des nouveaux raccourcis, retrait de ceux réellement soldés)
 - Pas de secret en dur (voir `.env.example`)
 - `docker compose up` fonctionne de zéro
-- Code review croisée si le binôme redevient actif

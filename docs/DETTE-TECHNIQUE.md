@@ -73,7 +73,7 @@ de sprint (voir Definition of Done, `ROADMAP.md`).
 - ~~Aucun CI~~ → `.github/workflows/ci.yml` : pipeline complet (générateurs + `demo()` + data contracts + migration ERP + `dbt build`, services MySQL/Mongo/MinIO/Postgres) à chaque push. **Vérifié réellement** sur GitHub Actions, pas juste écrit : premier run vert du premier coup
 - ~~Cible BigQuery non fonctionnelle~~ → projet GCP dédié `bv-dataplatform`, RLS + Policy Tags appliqués et **prouvés par requête réelle** avec 4 comptes de service (`governance/`)
 - ~~Pas de checklist rotation des secrets~~ → `docs/SECRETS-CHECKLIST.md` livré (les mots de passe par défaut restent en l'état tant que rien n'est exposé, conformément à la checklist elle-même)
-- ~~`dbt docs` non publié~~ → `.github/workflows/dbt-docs.yml`, publié sur https://valentinratigniet-byte.github.io/projet-baptiste-valentin/ (GitHub Pages activé, build via Actions)
+- ~~`dbt docs` non publié~~ → `.github/workflows/dbt-docs.yml`, publié sur https://valentinratigniet-byte.github.io/data-platform-controle-gestion/ (GitHub Pages activé, build via Actions)
 - ~~Scripts `governance/` exigeaient `GRPC_DEFAULT_SSL_ROOTS_FILE_PATH` positionnée à la main~~ (trouvé en écrivant ce sprint) → variable `GRPC_CA_BUNDLE` dans `.env`, appliquée automatiquement par les scripts
 
 ## Résolu Sprint 5 (rappel)

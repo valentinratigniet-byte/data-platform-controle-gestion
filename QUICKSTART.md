@@ -25,7 +25,7 @@ migration ERP → chargement `raw` → dbt). Changer l'ordre fait planter une
 ## Étapes
 
 1. **Récupérer le projet** (clone Git ou dézipper l'archive) puis se placer
-   dans le dossier `projet-baptiste-valentin/`.
+   dans le dossier `data-platform-controle-gestion/`.
 
 2. **Copier la config**
    ```bash

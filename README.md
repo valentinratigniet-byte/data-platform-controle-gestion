@@ -1,6 +1,6 @@
 # Data Platform — Contrôle de Gestion & Pilotage d'entreprise
 
-Projet binôme Baptiste / Valentin. Simulation end-to-end de la data platform
+Simulation end-to-end de la data platform
 et du DataOps d'une entreprise multi-millions d'euros, stack 100% gratuite.
 
 - [`STATUS.md`](STATUS.md) — **état des lieux** : où en est le projet, ce qui tourne, dette ouverte
@@ -19,7 +19,7 @@ et du DataOps d'une entreprise multi-millions d'euros, stack 100% gratuite.
 - [`docs/TRACABILITE-KPI.md`](docs/TRACABILITE-KPI.md) — outil interactif de traçabilité KPI + fiche ERP native
 - [`docs/BI.md`](docs/BI.md) — 4 tableaux de bord (PDG, CG, RH, FinOps), preuve RLS/masking en direct
 - [`docs/BI-POWERBI.md`](docs/BI-POWERBI.md) — rapport Power BI Pilotage CG, modèle sémantique, RLS testée
-- **Doc dbt en ligne** : https://valentinratigniet-byte.github.io/projet-baptiste-valentin/
+- **Doc dbt en ligne** : https://valentinratigniet-byte.github.io/data-platform-controle-gestion/
 
 ## Démarrer l'infra locale
 
@@ -185,10 +185,18 @@ Opérationnel, FinOps/Audit), données réelles régénérées par
 
 `dashboards/powerbi/dbt_cg.pbix` (rapport **Pilotage CG**, 4 pages :
 Vue direction, Contrôle de gestion, RH & Opérationnel, FinOps/Audit).
-Modèle sémantique construit avec Valentin (14 tables, 17 mesures DAX,
-RLS 4 rôles testée par requête réelle), visuels conçus par Valentin.
-Captures dans `dashboards/powerbi/outputs/`, détail complet dans
-[`docs/BI-POWERBI.md`](docs/BI-POWERBI.md).
+Modèle sémantique : 14 tables, 17 mesures DAX, RLS 4 rôles testée par
+requête réelle. Mise en page selon la charte Power BI du portfolio (Petrol &
+Ambre v2 : bandeau titre + onglets, tuiles KPI, bande de filtres, pied de page
+source). Détail complet dans [`docs/BI-POWERBI.md`](docs/BI-POWERBI.md).
+
+![Pilotage CG — vue direction](dashboards/powerbi/outputs/page1-pdg.png)
+
+![Pilotage CG — contrôle de gestion](dashboards/powerbi/outputs/page2-cg.png)
+
+![Pilotage CG — RH et opérationnel](dashboards/powerbi/outputs/page3-rh.png)
+
+![Pilotage CG — FinOps et audit](dashboards/powerbi/outputs/page4-finops.png)
 
 ## Tests end-to-end
 

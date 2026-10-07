@@ -33,7 +33,7 @@ acceptables (dette technique assumée, voir `docs/DETTE-TECHNIQUE.md`).
       besoin de recréer des RLS/Policy Tags (rôles utilisés une fois au
       setup, pas à chaque `dbt build`)
 
-## Avant tout partage du repo (public ou avec Baptiste)
+## Avant tout partage du repo (public)
 
 - [ ] `git status` propre, `.env` non suivi (vérifier `.gitignore`)
 - [ ] `docker exec bv-minio-bronze mc admin user list local` — pas de

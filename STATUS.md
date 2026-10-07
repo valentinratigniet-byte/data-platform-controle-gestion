@@ -27,7 +27,7 @@ Détail sprint par sprint avec les chiffres réels de chaque exécution :
 - **Données** : 4 442 ventes réelles (CRM) + 2 457 lignes ERP legacy migrées + 23 841 logs applicatifs + budget/forecast (2 232 / 1 674 lignes)
 - **Qualité** : 10 contrats JSON Schema, ~35 400 lignes acceptées en Bronze, ~43 rejetées en DLQ
 - **RGPD** : 1 champ personnel identifié et anonymisé ; raisons sociales clients volontairement non anonymisées (justifié dans `docs/DATA-CONTRACTS.md`)
-- **Entrepôt** : `dbt_cg/`, 21 modèles, **68/68 tests PASS**, doc publiée sur [GitHub Pages](https://valentinratigniet-byte.github.io/projet-baptiste-valentin/)
+- **Entrepôt** : `dbt_cg/`, 21 modèles, **68/68 tests PASS**, doc publiée sur [GitHub Pages](https://valentinratigniet-byte.github.io/data-platform-controle-gestion/)
 - **n8n** : 5 workflows versionnés et importables, testés après réimport complet sur instance vierge
 - **MDM** : réconciliation client SIRET + fuzzy-match — précision 80,2% (F1 89,0%)
 - **Gouvernance BigQuery** : RLS + Policy Tags sur `fct_ecarts_reel_budget`, **prouvés par requête réelle** avec 4 comptes de service — RH : 0 ligne + colonne refusée, Finance/Direction/PDG : 2 240 lignes, 11 847 943,82€
@@ -58,4 +58,4 @@ testant la RLS du rapport Power BI.
 ## Historique des versions
 
 Chaque sprint terminé est tagué comme release GitHub avec ses chiffres :
-voir l'onglet [Releases](https://github.com/valentinratigniet-byte/projet-baptiste-valentin/releases).
+voir l'onglet [Releases](https://github.com/valentinratigniet-byte/data-platform-controle-gestion/releases).
