@@ -1,4 +1,5 @@
 # Data Platform — Contrôle de Gestion & Pilotage d'entreprise
+[![CI](https://github.com/valentinratigniet-byte/data-platform-controle-gestion/actions/workflows/ci.yml/badge.svg)](https://github.com/valentinratigniet-byte/data-platform-controle-gestion/actions/workflows/ci.yml)
 
 Simulation end-to-end de la data platform
 et du DataOps d'une entreprise multi-millions d'euros, stack 100% gratuite.
