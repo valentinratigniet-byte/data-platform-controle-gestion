@@ -1,0 +1,230 @@
+{
+  "schema_version": 1,
+  "diagram_type": "dataflow",
+  "meta": {
+    "title": "Data platform contrôle de gestion",
+    "quality_profile": "showcase",
+    "viewBox": [
+      1080,
+      500
+    ],
+    "legend": {
+      "mode": "hidden"
+    }
+  },
+  "stages": [
+    {
+      "label": "Sources"
+    },
+    {
+      "label": "Contrôle"
+    },
+    {
+      "label": "Bronze"
+    },
+    {
+      "label": "Gold (dbt)"
+    },
+    {
+      "label": "Consommation"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "mysql",
+      "type": "database",
+      "label": "MySQL",
+      "sublabel": "CRM",
+      "stage": 0,
+      "row": 0,
+      "brand": "mysql"
+    },
+    {
+      "id": "mongo",
+      "type": "database",
+      "label": "MongoDB",
+      "sublabel": "logs",
+      "stage": 0,
+      "row": 1,
+      "brand": "mongodb"
+    },
+    {
+      "id": "gen",
+      "type": "external",
+      "label": "Générateurs",
+      "sublabel": "réel / budget",
+      "stage": 0,
+      "row": 2,
+      "tag": "Python"
+    },
+    {
+      "id": "contracts",
+      "type": "security",
+      "label": "Data contracts",
+      "sublabel": "JSON Schema",
+      "stage": 1,
+      "row": 1,
+      "tag": "RGPD"
+    },
+    {
+      "id": "minio",
+      "type": "cloud",
+      "label": "MinIO",
+      "sublabel": "S3 compatible",
+      "stage": 2,
+      "row": 1,
+      "tag": "Docker"
+    },
+    {
+      "id": "bq",
+      "type": "database",
+      "label": "BigQuery",
+      "sublabel": "écarts réel/budget",
+      "stage": 3,
+      "row": 0,
+      "tag": "prod",
+      "brand": "google-cloud",
+      "width": 150
+    },
+    {
+      "id": "pg",
+      "type": "database",
+      "label": "Postgres",
+      "sublabel": "dbt_cg",
+      "stage": 3,
+      "row": 1,
+      "tag": "dev",
+      "brand": "postgresql"
+    },
+    {
+      "id": "bi",
+      "type": "frontend",
+      "label": "Dashboards",
+      "sublabel": "HTML/JS + Power BI",
+      "stage": 4,
+      "row": 0,
+      "tag": "RLS"
+    },
+    {
+      "id": "n8n",
+      "type": "messagebus",
+      "label": "n8n",
+      "sublabel": "liasse + alertes",
+      "stage": 4,
+      "row": 1,
+      "tag": "reverse ETL"
+    },
+    {
+      "id": "mlops",
+      "type": "backend",
+      "label": "MLOps",
+      "sublabel": "forecast · drift",
+      "stage": 4,
+      "row": 2,
+      "tag": "Ollama"
+    }
+  ],
+  "flows": [
+    {
+      "from": "mysql",
+      "to": "contracts",
+      "label": "extract",
+      "variant": "default",
+      "fromSide": "right",
+      "toSide": "top",
+      "via": [
+        [
+          315,
+          157
+        ]
+      ]
+    },
+    {
+      "from": "mongo",
+      "to": "contracts",
+      "label": "extract",
+      "variant": "default",
+      "route": "straight"
+    },
+    {
+      "from": "gen",
+      "to": "contracts",
+      "label": "CSV",
+      "variant": "default"
+    },
+    {
+      "from": "contracts",
+      "to": "minio",
+      "label": "valide",
+      "variant": "emphasis",
+      "route": "straight"
+    },
+    {
+      "from": "minio",
+      "to": "pg",
+      "label": "raw",
+      "variant": "emphasis",
+      "route": "straight"
+    },
+    {
+      "from": "minio",
+      "to": "bq",
+      "label": "seeds",
+      "variant": "default",
+      "fromSide": "top",
+      "toSide": "left",
+      "via": [
+        [
+          530,
+          157
+        ]
+      ]
+    },
+    {
+      "from": "bq",
+      "to": "bi",
+      "label": "FinOps",
+      "variant": "security",
+      "route": "straight"
+    },
+    {
+      "from": "pg",
+      "to": "bi",
+      "label": "PDG / CG / RH",
+      "variant": "security",
+      "fromSide": "top",
+      "toSide": "bottom",
+      "via": [
+        [
+          745,
+          214
+        ],
+        [
+          960,
+          214
+        ]
+      ]
+    },
+    {
+      "from": "pg",
+      "to": "n8n",
+      "label": "Gold",
+      "variant": "emphasis",
+      "route": "straight"
+    },
+    {
+      "from": "pg",
+      "to": "mlops",
+      "label": "lecture seule",
+      "variant": "dashed",
+      "fromSide": "bottom",
+      "toSide": "left",
+      "via": [
+        [
+          745,
+          385
+        ]
+      ]
+    }
+  ]
+}

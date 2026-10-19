@@ -22,6 +22,12 @@ et du DataOps d'une entreprise multi-millions d'euros, stack 100% gratuite.
 - [`docs/BI-POWERBI.md`](docs/BI-POWERBI.md) — rapport Power BI Pilotage CG, modèle sémantique, RLS testée
 - **Doc dbt en ligne** : https://valentinratigniet-byte.github.io/data-platform-controle-gestion/
 
+## 🏗️ Architecture
+
+![Schéma d'architecture](docs/architecture.png)
+
+**[Ouvrir le schéma interactif](https://htmlpreview.github.io/?https://github.com/valentinratigniet-byte/data-platform-controle-gestion/blob/main/docs/architecture.html)** (zoom, recherche, suivi des flux, export PNG/SVG). Généré avec [Archify](https://github.com/tt-a1i/archify) depuis [`docs/architecture.archify.json`](docs/architecture.archify.json).
+
 ## Démarrer l'infra locale
 
 ```bash
