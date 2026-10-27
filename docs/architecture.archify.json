@@ -10,7 +10,8 @@
     ],
     "legend": {
       "mode": "hidden"
-    }
+    },
+    "output": "docs/architecture.html"
   },
   "stages": [
     {

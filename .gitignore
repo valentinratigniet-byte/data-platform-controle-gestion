@@ -11,3 +11,9 @@ logs/
 data-generation/output/
 erp-legacy/exports/
 mlops/reports/*.html
+
+# Reçus de contrôle Archify
+docs/*.finalize.json
+docs/*.finalize-summary.json
+docs/*.delivery.json
+docs/*.browser-check.json
